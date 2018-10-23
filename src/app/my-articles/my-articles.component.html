@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row header">
+    <div class="col-12">
+      {{createdArticle.article.title}}
+    </div>
+    <div class="col-1">
+      <img class="img-fluid image" src="{{createdArticle.article.author.image}}" height=40px width=40px>
+    </div>
+    <div class='col-3'>
+      <div>{{createdArticle.article.author.username}}</div>
+      <div>{{createdArticle.article.createdAt}}</div>
+    </div>
+    <div *ngIf="isAuthenticated &&  isCurrentUser==createdArticle.article.author.username" class="col-2">
+      <button type="button" class="btn btn-default btn-sm" (click)="updateArticle(createdArticle.article.slug)">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+    </div>
+    <div class="col-2" *ngIf="isAuthenticated && isCurrentUser==createdArticle.article.author.username">
+      <button type="button" (click)="deletearticle(createdArticle.article.slug)" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-trash"></span> Delete Article
+      </button>
+    </div>
+    <div class="col-2" *ngIf=" isCurrentUser!=createdArticle.article.author.username &&  !isFollowing">
+      <button type="button" (click)="followUser(authorName)" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-plus"></span> Follow {{createdArticle.article.author.username}}
+      </button>
+    </div>
+    <div class="col-2" *ngIf=" isCurrentUser!=createdArticle.article.author.username &&  isFollowing">
+      <button type="button" (click)="unfollowUser(authorName)" class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-plus-sign"></span> unFollow {{createdArticle.article.author.username}}
+      </button>
+    </div>
+    <div class="col-2" *ngIf=" isCurrentUser!=authorName  && !favorited">
+      <button type="button" (click)='likeArticle(slug)' class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-heart"></span> Favorite Article({{favoritesCount}})
+      </button>
+    </div>
+    <div class="col-2" *ngIf=" isCurrentUser!=authorName && favorited">
+      <button type="button" (click)='unlikeArticle(createdArticle.article.slug)' class="btn btn-info btn-sm">
+        <span class="glyphicon glyphicon-heart-empty"></span> unFavorite Article({{favoritesCount}})
+      </button>
+    </div>
+  </div>
+  <div class="row body">
+    {{createdArticle.article.body}}
+  </div>
+  <hr>
+  <div class="comment" *ngIf='isAuthenticated'>
+    <form #createForm="ngForm">
+
+      <input type="text" class="tags" placeholder="Write a comment" height="200" width="120" name="tags" [(ngModel)]="comment">
+      <br>
+      <button type="submit" (click)="submit()" class="btn btn-success">Post comment</button>
+    </form>
+  </div>
+  <p *ngIf='!isAuthenticated'>
+    <a routerLink='/signup'>signup</a> or
+    <a routerLink='/login'>login</a> to add comment</p>
+  <div *ngFor="let com of comments" class="comment1">
+    <!-- <div class="row">{{com.body}}</div>
+    <div class="row">
+      <div class=col-2>
+        {{com.author.username}}
+      </div>
+      <div class="col-5">{{com.updatedAt}}
+      </div>
+      <div *ngIf="com.author.username==isCurrentUser" class="row">
+        <button (click)="deletecomment(com.id,com)" type="button" class="btn btn-info btn-xs">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </div>
+    </div> -->
+    <div class="card">
+      <div class="card-block">
+        <p class="card-text text">
+          {{com.body}}
+        </p>
+      </div>
+      <div class="card-footer ">
+        <a class="comment-author" href="/detail/{{com.author.username}}">
+          <img src="{{com.author.image}}" class="comment-author-img" />
+        </a>
+        &nbsp;
+        <a class="comment-author" href="/detail/{{com.author.username}}">
+          {{com.author.username}}
+        </a>
+        <span class="date-posted">
+          {{com.updatedAt| date: 'longDate' }}
+        </span>
+        <span *ngIf="com.author.username==isCurrentUser" class="col-4">
+          <button (click)="deletecomment(com.id,com)" type="button" class="btn btn-info btn-xs">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

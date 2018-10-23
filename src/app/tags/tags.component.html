@@ -1,0 +1,10 @@
+<div>
+  <a routerLink='/tags/dragons'>Tags</a>&nbsp;&nbsp;
+  <span>{{tag}}</span>
+</div>
+
+<hr>
+<div *ngFor="let feed of tagFeeds" class="messages">
+  <app-feed [feed]="feed"></app-feed>
+  <hr>
+</div>

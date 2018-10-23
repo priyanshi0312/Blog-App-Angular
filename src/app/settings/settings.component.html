@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="signUpCard">
+    <form (ngSubmit)="submit()" #signupForm="ngForm">
+      <h2 class="heading">Your Setting</h2>
+
+      <label for="userId" class="label">Url of Your Picture</label>
+      <input type="text" name="Url" placeholder="Url of Your Picture" [(ngModel)]="Url" class="formInput" maxlength="60" required/>
+
+      <label for="name" class="label">Username</label>
+      <input type="text" name="userName" value="user" [(ngModel)]="user" class="formInput" required/>
+
+      <label for="name" class="label">Short Bio about you</label>
+      <input type="text" name="userBio" placeholder="About Bio about you" [(ngModel)]="bio" class="formInput" required/>
+
+      <label for="userId" class="label">Email</label>
+      <input type="email" name="email" value="usermail" [(ngModel)]="usermail" class="formInput" maxlength="60" required/>
+
+      <label for="password" class="label">Password</label>
+      <input type="password" name="password" placeholder="Choose a password" [(ngModel)]="password" class="formInput" required/>
+
+      <button [disabled]="!signupForm.form.valid" type="submit" class="btn" id="btn-signUp">
+        Update Settings
+      </button>
+      <hr>
+
+    </form>
+    <button (click)="logout()" type="submit" class="btn" id="btn-signUp">
+      LogOut
+    </button>
+  </div>
+</div>

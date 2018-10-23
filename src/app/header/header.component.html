@@ -1,0 +1,83 @@
+<!-- <div class="header row">
+  <div class='title' column="6">Conduit</div>
+  <div class="Home col-6">
+    <a [routerLink]="['/']">
+      Home
+    </a>
+  </div>
+
+  <div class="Login col2">
+    <a [routerLink]="['/login']">
+      login
+    </a>
+  </div>
+
+  <div class="signup col2">
+    <a [routerLink]=" [ '/signup'] ">
+      signup
+    </a>
+  </div>
+
+  <div>
+    <a href="# " (click)="logout() " *ngIf="auth.loggedIn ">
+      LogOut
+    </a>
+  </div>
+
+  <a [routerLink]="[ '/createArticle'] ">
+    CreateArticle
+  </a>
+</div> -->
+
+
+
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark header">
+  <a class="navbar-brand" [routerLink]="['/']">Conduit</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/']">
+
+          Home
+
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!isAuthenticate" [routerLink]="['/login']">
+          Login
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!isAuthenticate" [routerLink]=" [ '/signup'] ">
+          signup
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isAuthenticate" [routerLink]=" [ '/createArticle'] ">
+          NewArticle
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isAuthenticate" [routerLink]="['/setting']">
+          Settings
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="isAuthenticate" routerLink='/detail/{{user}}'>
+          {{user}}
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>

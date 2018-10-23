@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="signUpCard">
+    <form #signupForm="ngForm">
+      <h2 class="heading">New Article</h2>
+
+      <label for="title" class="label">Title</label>
+      <input type="text" name="title" placeholder="Title of your Article" [(ngModel)]="title" class="formInput" required/>
+
+      <label for="about" class="label">About</label>
+      <input type="text" name="about" placeholder="about Your article" [(ngModel)]="about" class="formInput" required/>
+
+      <label for="description" class="label">description</label>
+      <input type="text" name="description" placeholder="description of title" [(ngModel)]="description" class="formInput" required/>
+
+      <label for="tags" class="label">About</label>
+      <input type="text" id="tags" name="tags" placeholder="add tags" [(ngModel)]="tags" class="formInput" (keyup.space)="addTags()"
+        required/>
+      <div class="row">
+        <div *ngFor="let tag of tagList">
+          <button type="button" (click)='removeTag(tag)' class="btn btn-info  btn-sm-0">
+            <span class="glyphicon glyphicon-remove"></span> {{tag}}
+          </button>
+        </div>
+      </div>
+
+      <button (click)="submit()" [disabled]="!signupForm.form.valid" type="submit" class="btn" id="btn-signUp">
+        Publish Article
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="signUpCard">
+  <form #createForm="ngForm">
+
+    <label for="password" class="label">title</label>
+    <input type="text" class="title" placeholder="Article Title" rows="4" cols="140" name="title" [(ngModel)]=>
+    <br>
+    <label for="password" class="label">abut</label>
+    <input type="text" class="about" placeholder="Whats about this article??" rows="6" cols="140" name="about" [(ngModel)]="about">
+    <br>
+    <label for="password" class="label">content</label>
+    <input type="text" class="description" placeholder="Write Your own article" rows="8" cols="140" name="description" [(ngModel)]="description">
+    <br>
+    <label for="password" class="label">tags</label>
+    <input type="text" class="tags" placeholder="Enter tags" rows="2" cols="140" name="tags" [(ngModel)]="tags">
+    <br>
+    <button type="submit" (click)="submit()" class="btn btn-success">Publish Article</button>
+  </form>
+</div> -->

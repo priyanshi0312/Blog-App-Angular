@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row header">
+    <div class="row image">
+      <img class="imageshow" src="{{author_details[0].author.image}}" height="40px" width="40px">
+    </div>
+    <div class="col-5"></div>
+    <div class='row name'>
+      {{authorUserName}}
+    </div>
+    <div class='col-12'>
+      <div class='col-9'></div>
+      <div class="col-3 follow" *ngIf=" isCurrentUser!=authorUserName && !authorFollowing ">
+        <button type="button " (click)="followUser(authorUserName) " class="btn btn-info btn-sm ">
+          <span class="glyphicon glyphicon-plus "></span> Follow {{authorUserName}}
+        </button>
+      </div>
+    </div>
+    <div class="col-12 unfollow" *ngIf=" isCurrentUser!=authorUserName && authorFollowing ">
+      <button type="button " (click)="unfollowuser(authorUserName) " class="btn btn-info btn-sm ">
+        <span class="glyphicon glyphicon-plus-sign "></span> unFollow {{authorUserName}}
+      </button>
+    </div>
+  </div>
+  <div class="row ">
+    <ul class="nav nav-tabs ">
+      <li class="nav-item ">
+        <a class="nav-link active " routerLink="/detail/{{authorUserName}} ">My Articles</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " routerLink="/favorite/{{authorUserName}} ">favourite</a>
+      </li>
+    </ul>
+    <div *ngFor="let feed of author_details " class="messages every ">
+      <app-feed [feed]="feed "></app-feed>
+      <hr>
+    </div>
+  </div>
+</div>

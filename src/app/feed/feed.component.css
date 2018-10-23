@@ -1,0 +1,22 @@
+.feed {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.image {
+  border-radius: 25px;
+  float: left;
+}
+
+.authorcreated {
+  margin-left: 2%;
+  margin-top: -100px;
+}
+
+.createdAt {
+  font-size: 10px;
+}
+
+.title {
+  font-size: 20px;
+  text-decoration: none;
+}

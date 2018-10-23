@@ -1,0 +1,33 @@
+<div class="feed container">
+  <div class='row'>
+    <div class="col-1">
+      <img class="img-fluid image" src={{image}} height=40px width=40px>
+    </div>
+    <div class="authorCreated col1">
+      <div>
+        <a routerLink='/detail/{{author}}'> {{author}}</a>
+      </div>
+      <div class='createdAt'>{{createdAt|date:'longDate'}}</div>
+    </div>
+  </div>
+  <div class="title row">
+    <a routerLink='/article/{{slug}}'>{{title}}</a>
+  </div>
+  <div class="description row">
+    <div class="col-2">{{description}}</div>
+    <div class="col-2">
+      <a routerLink='/article/slug'>Read More</a>
+    </div>
+    <div class="col-2" *ngIf='  !favorited '>
+      <button (click)="likeArticle(slug)" type="button" class="btn btn-success btn-xs">
+        <span class="glyphicon glyphicon-heart"></span>{{favoritesCount}}
+      </button>
+    </div>
+    <div class="col-2" *ngIf=' favorited'>
+      <button (click)="unlikeArticle(slug)" type="button" class="btn btn-success btn-xs">
+        <span class="glyphicon glyphicon-heart-empty"></span>{{favoritesCount}}
+      </button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class='row heading'>Popular Tags</div>
+  <div class="row">
+    <div *ngFor="let tag of tags" class="messages btn btn-secondary btn-sm ">
+      <a routerLink='/home/tags/{{tag}}' class="link">{{tag}} </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- <button type="button" class="btn btn-secondary small"></button> -->

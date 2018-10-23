@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="signUpCard">
+    <form #signupForm="ngForm">
+      <h2 class="heading">Update Article</h2>
+
+      <label for="title" class="label">Title</label>
+      <input type="text" name="title" value="title" [(ngModel)]="title" class="formInput" maxlength="60" required/>
+
+      <label for="about" class="label">About</label>
+      <input type="text" name="about" value="about" [(ngModel)]="about" class="formInput" required/>
+
+      <label for="description" class="label">description</label>
+      <input type="text" name="description" value="description" [(ngModel)]="description" class="formInput" required/>
+
+      <label for="tags" class="label">About</label>
+      <input type="text" id="tags" name="tags" placeholder="add tags" [(ngModel)]="tags" class="formInput" (keyup.enter)="addTags()"
+        required/>
+      <div class="row">
+        <div *ngFor="let tag of tagList">
+          <button (click)='removeTag(tag)' type="button" class="btn btn-info  btn-sm-0">
+            <span class="glyphicon glyphicon-remove"></span> {{tag}}
+          </button>
+        </div>
+      </div>
+
+      <button (click)="submit()" [disabled]="!signupForm.form.valid" type="submit" class="btn" id="btn-signUp">
+        Publish Article
+      </button>
+    </form>
+  </div>
+</div>

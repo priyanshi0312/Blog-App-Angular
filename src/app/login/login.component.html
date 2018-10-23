@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="signUpCard">
+    <form (ngSubmit)="submit()" #signupForm="ngForm">
+      <h2 class="heading">Log In</h2>
+      <a routerLink='/signup'>Need a Account</a>
+      <label for="userId" class="label">Email</label>
+      <input type="email" name="email" placeholder="Enter your email address" [(ngModel)]="userId" class="formInput" maxlength="60"
+        required/>
+
+      <label for="password" class="label">Password</label>
+      <input type="password" name="password" placeholder="Choose a password" [(ngModel)]="password" class="formInput" required/>
+
+      <button [disabled]="!signupForm.form.valid" type="submit" class="btn" id="btn-signUp">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

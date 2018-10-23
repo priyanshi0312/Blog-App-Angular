@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div style="float: left;margin-left:30px" class="col-7">
+      <div style="float: left row ">
+        <a [routerLink]="[ '/home/globalfeed']">GlobalFeed</a>&nbsp;&nbsp;
+        <a *ngIf="isAuthenticate" [routerLink]="[ '/detail/'+currentUser]">MyFeed</a>
+
+      </div>
+      <router-outlet></router-outlet>
+      <!-- <button type="button" (click)="yourFeed()">My Feed</button> -->
+    </div>
+    <div class="col-3">
+      <app-popular-tags></app-popular-tags>
+    </div>
+  </div>
+</div>

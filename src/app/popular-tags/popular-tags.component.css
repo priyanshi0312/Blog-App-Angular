@@ -1,0 +1,35 @@
+.messages {
+  float: left;
+  margin-left: 2%;
+  margin-top: 2%;
+  border-radius: 30px;
+  width: 70px;
+  color: white;
+}
+
+.tags {
+  float: left;
+  height: 200px;
+  width: 30%;
+  background-color: whitesmoke;
+  text-align: center;
+  margin-left: 450px;
+  margin-top: 20px;
+}
+
+.container {
+  height: 200px;
+  width: 400px;
+  background-color: #efeff0;
+  margin-left: 50px;
+  border-radius: 5px;
+}
+
+.heading {
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+.link {
+  color: white;
+}

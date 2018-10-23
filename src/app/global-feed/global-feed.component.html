@@ -1,0 +1,9 @@
+<div>
+  <div class="feed row">Global Feed </div>
+  <hr>
+  <div *ngFor="let feed of global_feed" class="messages">
+
+    <app-feed [feed]="feed"></app-feed>
+    <hr>
+  </div>
+</div>

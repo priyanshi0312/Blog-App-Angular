@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row header">
+    <div class="row image">
+      <img class="imageshow" src='{{image}}' height="40px" width="40px">
+    </div>
+    <div class="col-5"></div>
+    <div class='row name'>
+      {{authorName}}
+    </div>
+    <div class='col-12'>
+      <div class='col-9'></div>
+      <div class="col-3 follow" *ngIf=" isCurrentUser!=authorName && !authorFollowing ">
+        <button type="button " (click)="followUser(authorName) " class="btn btn-info btn-sm ">
+          <span class="glyphicon glyphicon-plus "></span> Follow {{authorName}}
+        </button>
+      </div>
+    </div>
+    <div class="col-12 unfollow" *ngIf=" isCurrentUser!=authorName && authorFollowing ">
+      <button type="button " (click)="unfollowUser(authorName) " class="btn btn-info btn-sm ">
+        <span class="glyphicon glyphicon-plus-sign "></span> unFollow {{authorName}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/detail/{{authorName}}">My Articles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/favorite/{{authorName}}">favourite</a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="myFavourite.length==0">No such elements</div>
+  <div *ngFor="let feed of myFavourite" class="messages">
+    <app-feed [feed]="feed"></app-feed>
+    <hr>
+  </div>
+</div>
